@@ -115,14 +115,14 @@ public class Parser {
 
     @Override
     public String toString() {
-        return "{" +
-                "overallScore=" + overallScore +
-                ", styleScore=" + styleScore +
-                ", abv=" + abv +
-                ", name='" + name + '\'' +
-                ", brewers='" + brewers + '\'' +
-                ", style='" + style + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "INSERT INTO BEER( `ID_beer`, `overallScore_beer`, `styleScore_beer`, `abv_beer`, `name_beer`, `brewers_beer`, `style_beer`, `address_beer` ) VALUES( '', " +
+                "'overallScore=" + overallScore +
+                "', 'styleScore=" + styleScore +
+                "', 'abv=" + abv +
+                "', 'name='" + name + '\'' +
+                "', 'brewers='" + brewers + '\'' +
+                "', 'style='" + style + '\'' +
+                "', 'address='" + address + '\'' +
+                "'};";
     }
 }
