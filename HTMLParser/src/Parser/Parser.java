@@ -35,14 +35,14 @@ public class Parser {
 
     private void extract()
     {
-        extractOverallScore();
-        extractStyleScore();
-        extractABV();
+        try { extractOverallScore(); } catch( Exception e ) { overallScore = -1; }
+        try { extractStyleScore();   } catch( Exception e ) { styleScore = -1; }
+        try { extractABV();          } catch( Exception e ) { abv = -1; }
 
         extractName();
-        extractBrewers();
+        try { extractBrewers();      } catch( Exception e ) { brewers = "Unknown"; }
         extractStyle();
-        extractAddress();
+        try { extractAddress();      } catch( Exception e ) { address = "Unknown"; }
     }
 
     private void extractOverallScore(){
@@ -115,14 +115,14 @@ public class Parser {
 
     @Override
     public String toString() {
-        return "{" +
-                "overallScore=" + overallScore +
-                ", styleScore=" + styleScore +
-                ", abv=" + abv +
-                ", name='" + name + '\'' +
-                ", brewers='" + brewers + '\'' +
-                ", style='" + style + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "INSERT INTO BEER( `ID_beer`, `overallScore_beer`, `styleScore_beer`, `abv_beer`, `name_beer`, `brewers_beer`, `style_beer`, `address_beer` ) VALUES( '', " +
+                "'" + overallScore +
+                "', '" + styleScore +
+                "', '" + abv +
+                "', '" + name +
+                "', '" + brewers +
+                "', '" + Style.getIdFromLibelle( style ) +
+                "', '" + address +
+                "');";
     }
 }
