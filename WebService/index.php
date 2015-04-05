@@ -155,7 +155,7 @@
       break;
 
     default:
-      generateJsonError( -1, "[WebApp] Unknown action '" . $_GET['action'] . "'" );
+      generateJsonError( -1, "[WebApp] Unknown action '" . getAction() . "'" );
       exit( 0 );
       break;
   }
